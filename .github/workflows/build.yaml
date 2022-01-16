@@ -12,8 +12,8 @@ jobs:
 
       - name: Install apt-get dependencies
         run: |
-          apt-get update
-          apt-get install -y qemu
+          sudo apt-get update
+          sudo apt-get install -y qemu
 
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
