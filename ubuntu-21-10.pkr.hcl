@@ -1,6 +1,6 @@
 variable "qemu_config" {
   default = {
-    headless : null,
+    headless : true,
     accelerator : null,
     display : null
     qemuargs : null
