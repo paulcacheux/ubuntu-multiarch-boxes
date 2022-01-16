@@ -59,4 +59,14 @@ build {
     start_retry_timeout = "15m"
     expect_disconnect   = "true"
   }
+
+  post-processor "vagrant" {
+    compression_level    = 9
+    keep_input_artifact  = false
+    vagrantfile_template = "templates/Vagrantfile.rb"
+    output               = "output/ubuntu2110-amd64-libvirt.box"
+    include = [
+      "templates/info.json"
+    ]
+  }
 }
