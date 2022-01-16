@@ -15,7 +15,7 @@ source "qemu" "ubuntu2110-amd64-libvirt" {
     "linux /casper/vmlinuz autoinstall quiet net.ifnames=0 biosdevname=0 ",
     "ds=\"nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu2110.vagrant.\" --- <enter><wait10>",
     "initrd /casper/initrd<enter><wait10>",
-    "boot<enter>"
+    "boot<enter>",
   ]
   format             = "qcow2"
   disk_size          = "131072"
@@ -31,8 +31,8 @@ source "qemu" "ubuntu2110-amd64-libvirt" {
   http_directory     = "http"
   # mac specific
   # headless = true
-  accelerator            = "hvf"
-  display                = "cocoa"
+  accelerator = "hvf"
+  display     = "cocoa"
   qemuargs = [
     ["-cpu", "host"]
   ]
@@ -48,4 +48,15 @@ source "qemu" "ubuntu2110-amd64-libvirt" {
 
 build {
   sources = ["source.qemu.ubuntu2110-amd64-libvirt"]
+
+  provisioner "shell" {
+    scripts = [
+      "scripts/fixkvp.sh",
+      "scripts/vagrant.sh",
+      "scripts/qemu.sh",
+    ]
+    timeout             = "120m"
+    start_retry_timeout = "15m"
+    expect_disconnect   = "true"
+  }
 }
