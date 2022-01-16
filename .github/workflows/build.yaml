@@ -10,6 +10,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Install apt-get dependencies
+        run: |
+          apt-get update
+          apt-get install -y qemu
+
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
         with:
