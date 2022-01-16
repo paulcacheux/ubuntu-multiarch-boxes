@@ -49,7 +49,7 @@ source "qemu" "ubuntu2110-amd64-libvirt" {
   ssh_username           = "root"
   ssh_password           = "vagrant"
   ssh_port               = 22
-  ssh_timeout            = "3600s"
+  ssh_timeout            = "3h"
   ssh_handshake_attempts = "20"
   shutdown_command       = "echo 'vagrant' | sudo -S shutdown -P now"
 }
