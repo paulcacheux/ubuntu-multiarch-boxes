@@ -23,3 +23,8 @@ jobs:
           packer build -color=false -on-error=abort ubuntu-21-10.pkr.hcl
         env:
           PACKER_LOG: 1
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ubuntu-21-10-amd64-libvirt.box
+          path: output/ubuntu2110-amd64-libvirt.box
