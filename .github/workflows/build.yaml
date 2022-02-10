@@ -33,7 +33,7 @@ jobs:
           PACKER_LOG: 1
 
       - uses: actions/upload-artifact@v2
-        if: matrix.arch == "amd64"
+        if: matrix.arch == 'amd64'
         with:
           name: ubuntu-21-10-${{ matrix.arch }}-libvirt.box
           path: output/ubuntu2110-${{ matrix.arch }}-libvirt.box
