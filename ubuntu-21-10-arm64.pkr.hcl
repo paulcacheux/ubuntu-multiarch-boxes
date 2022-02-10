@@ -38,6 +38,7 @@ source "qemu" "ubuntu2110-arm64-libvirt" {
   cpus               = 2
   memory             = 2048
   http_directory     = "http"
+  qemu_binary        = "qemu-system-aarch64"
 
   headless    = var.qemu_config.headless
   accelerator = var.qemu_config.accelerator
