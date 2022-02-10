@@ -46,7 +46,7 @@ source "qemu" "ubuntu2110-arm64-libvirt" {
   qemuargs    = var.qemu_config.qemuargs
 
   iso_url                = "https://cdimage.ubuntu.com/releases/21.10/release/ubuntu-21.10-live-server-arm64.iso"
-  iso_checksum           = "sha256:e84f546dfc6743f24e8b1e15db9cc2d2c698ec57d9adfb852971772d1ce692d4"
+  iso_checksum           = "sha256:5314c6d923b187fda046c9affc3f59feedd35e375afdef369d17860ea15df49b"
   ssh_username           = "root"
   ssh_password           = "vagrant"
   ssh_port               = 22
