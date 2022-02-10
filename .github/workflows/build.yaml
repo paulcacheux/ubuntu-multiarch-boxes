@@ -16,7 +16,7 @@ jobs:
 
       - name: Validate Template
         run: |
-          packer validate ubuntu-21-10.pkr.hcl
+          packer validate ubuntu-21-10-amd64.pkr.hcl
 
       - name: Build Artifact
         run: |
