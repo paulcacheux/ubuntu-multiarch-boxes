@@ -6,25 +6,34 @@ jobs:
     runs-on: ubuntu-latest
     name: Build vagrant box
 
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            qemu: x86
+          - arch: arm64
+            qemu: aarch64
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Install qemu
         run: |
-          sudo apt-get install -y qemu-system-x86
+          sudo apt-get install -y qemu-system-${{ matrix.qemu }}
 
       - name: Validate Template
         run: |
-          packer validate ubuntu-21-10-amd64.pkr.hcl
+          packer validate ubuntu-21-10-${{ matrix.arch }}.pkr.hcl
 
       - name: Build Artifact
         run: |
-          packer build -color=false -on-error=abort ubuntu-21-10-amd64.pkr.hcl
+          packer build -color=false -on-error=abort ubuntu-21-10-${{ matrix.arch }}.pkr.hcl
         env:
           PACKER_LOG: 1
 
       - uses: actions/upload-artifact@v2
+        if: matrix.arch == amd64
         with:
-          name: ubuntu-21-10-amd64-libvirt.box
-          path: output/ubuntu2110-amd64-libvirt.box
+          name: ubuntu-21-10-${{ matrix.arch }}-libvirt.box
+          path: output/ubuntu2110-${{ matrix.arch }}-libvirt.box
