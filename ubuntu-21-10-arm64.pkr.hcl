@@ -44,7 +44,7 @@ source "qemu" "ubuntu2110-arm64-libvirt" {
   headless    = var.qemu_config.headless
   accelerator = var.qemu_config.accelerator
   display     = var.qemu_config.display
-  qemuargs    = concat(var.qemu_config.qemuargs, [["-boot", "strict=off"]])
+  qemuargs    = [["-boot", "strict=off"]]
 
   iso_url                = "https://cdimage.ubuntu.com/releases/21.10/release/ubuntu-21.10-live-server-arm64.iso"
   iso_checksum           = "sha256:5314c6d923b187fda046c9affc3f59feedd35e375afdef369d17860ea15df49b"
