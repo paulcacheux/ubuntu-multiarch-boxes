@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Artifact
         run: |
-          packer build -color=false -on-error=abort ubuntu-21-10.pkr.hcl
+          packer build -color=false -on-error=abort ubuntu-21-10-amd64.pkr.hcl
         env:
           PACKER_LOG: 1
 
